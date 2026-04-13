@@ -1,0 +1,73 @@
+name: Deploy Quartz to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout vault
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Clone Quartz v4
+        run: git clone https://github.com/jackyzha0/quartz.git _quartz
+
+      - name: Install Quartz dependencies
+        working-directory: _quartz
+        run: npm ci
+
+      - name: Apply custom Quartz config
+        run: cp quartz.config.ts _quartz/quartz.config.ts
+
+      - name: Copy vault content to Quartz
+        run: |
+          mkdir -p _quartz/content
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.obsidian' \
+            --exclude='.trash' \
+            --exclude='_quartz' \
+            --exclude='.github' \
+            --exclude='*.tmp' \
+            --exclude='quartz.config.ts' \
+            ./ _quartz/content/
+
+      - name: Build Quartz
+        working-directory: _quartz
+        run: npx quartz build
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _quartz/public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
