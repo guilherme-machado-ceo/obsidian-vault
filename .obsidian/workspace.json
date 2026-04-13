@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1ef81c6e09b5e170",
+        "id": "402a578a7bcca1d0",
         "type": "tabs",
         "children": [
           {
-            "id": "c2b0879752df3e44",
+            "id": "f22b9a3b7f4c2b1f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -184,11 +184,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c2b0879752df3e44",
+  "active": "f22b9a3b7f4c2b1f",
   "lastOpenFiles": [
+    "00-Inbox/README.md",
+    "README.md",
+    "03-Recursos/Templates/fleeting-note.md",
+    "03-Recursos/Templates/nota-projeto.md",
+    "03-Recursos/Templates",
+    "03-Recursos/Referencias",
+    "03-Recursos",
+    "02-Areas/Ecosistema",
+    "02-Areas/Pesquisa",
+    "02-Areas/Financeiro",
+    "02-Areas",
+    "01-Projetos/Marcabru-Aiara",
+    "01-Projetos/Instituto-PCIH3",
+    "01-Projetos/Hubstry-CaaS",
     "04-Arquivo/Marcabru-Aiara/Poema - Sina da Morte v1.md",
-    "04-Arquivo/Marcabru-Aiara",
-    "04-Arquivo",
     "Overall Consultoria 720.md",
     "Bem-vindo ao Manus.md",
     "Poema - Sina da Morte.md"
