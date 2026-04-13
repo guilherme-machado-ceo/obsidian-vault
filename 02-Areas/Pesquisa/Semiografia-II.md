@@ -1,3 +1,97 @@
+\---
+
+title: "Semiografia II"
+
+date: 2026-04-13
+
+tags:
+
+&#x20; - sistema-autoral
+
+&#x20; - semiótica
+
+&#x20; - cognição
+
+&#x20; - método
+
+&#x20; - programa-de-pesquisa
+
+aliases:
+
+&#x20; - Semiografia®
+
+&#x20; - Sistema Semiográfico
+
+&#x20; - Método Semiográfico
+
+\---
+
+\# ✒️ Semiografia
+
+> \*\*Definição nuclear:\*\*
+
+> Inflexão do pensamento humano sobre o signo multissemiótico, iterando exaustivamente sobre todas as possibilidades dos processos cognitivos.
+
+\---
+
+\## 1 · Anatomia da definição
+
+A definição é densa. Cada termo é um operador. Vamos decompor:
+
+\### 1.1 · \*Inflexão\*
+
+Não "reflexão" — que é espelhamento, volta ao mesmo.
+
+Não "deflexão" — que é desvio, fuga.
+
+\*\*Inflexão\*\* — que é \*curvatura\*: o pensamento \*verga\* sobre seu objeto, mudando de direção sem romper a continuidade. A inflexão é o ponto onde a concavidade muda de sinal. Em cálculo diferencial, é onde $f''(x) = 0$ e a curva troca de comportamento.
+
+Aplicada ao pensamento: inflexão é o momento em que a mente \*\*não apenas pensa o signo\*\*, mas \*\*dobra sobre o próprio ato de pensar o signo\*\* — e ao dobrar, descobre uma nova orientação. É metacognição operativa, não contemplativa.
+
+A inflexão é também um termo da \*\*morfologia linguística\*\*: a variação de forma que uma palavra sofre para expressar categorias gramaticais (tempo, modo, pessoa, caso). Pensar semiograficamente é \*\*declinar o signo\*\* — passá-lo por todas as suas \*flexões\* possíveis, como quem conjuga um verbo em todos os tempos, modos, vozes e pessoas. Mas aqui o que se conjuga não é um verbo — é um \*\*signo em todas as suas dimensões semióticas\*\*.
+
+\---
+
+\### 1.2 · \*Pensamento humano\*
+
+Não "razão pura". Não "lógica formal". \*\*Pensamento humano\*\* — com toda a sua carnalidade:
+
+\- \*\*Percepção\*\* — o pensamento que vem antes da palavra.
+
+\- \*\*Afeto\*\* — o pensamento que tem temperatura.
+
+\- \*\*Imaginação\*\* — o pensamento que fabrica o que não há.
+
+\- \*\*Memória\*\* — o pensamento que escava o que houve.
+
+\- \*\*Juízo\*\* — o pensamento que corta: sim/não, verdadeiro/falso, justo/injusto.
+
+\- \*\*Inferência\*\* — o pensamento que salta: dedução, indução, abdução.
+
+\- \*\*Volição\*\* — o pensamento que empurra: querer, decidir, agir.
+
+\- \*\*Atenção\*\* — o pensamento que recorta: figura/fundo, foco/periferia.
+
+A Semiografia não privilegia nenhum desses modos. Ela os \*\*itera todos\*\* sobre cada signo.
+
+\---
+
+\### 1.3 · \*Sobre o signo multissemiótico\*
+
+O objeto da inflexão não é o signo linguístico saussuriano (significante/significado, arbitrário, linear). É o \*\*signo peirciano em regime multissemiótico\*\*:
+
+\- \*\*Multissemiótico\*\* = pertencente a múltiplos sistemas de signos simultaneamente. Uma canção é som, palavra, ritmo, melodia, harmonia, performance corporal, gesto, registro fonográfico, partitura, vídeo. Cada camada é uma \*semiose\* distinta. O signo multissemiótico é a \*\*travessia\*\* dessas camadas.
+
+Peirce definiu o signo como relação triádica irredutível:
+
+Signo (Representamen)
+
+&#x20;       /         \\
+
+&#x20;      /           \\
+
+&#x20; Objeto ←————→ Interpretante
+
 Mas na Semiografia, o signo é considerado em sua \*\*multidimensionalidade semiótica real\*\* — não em uma semiose isolada, mas no \*\*entrecruzamento de todas as semioses em que participa\*\*.
 
 Um mapa, por exemplo, é simultaneamente:
