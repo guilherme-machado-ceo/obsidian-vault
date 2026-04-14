@@ -43,6 +43,7 @@ Não é um blog. Não é um portfólio estático.
 - **Obsidian** — interface local do vault
 - **GitHub** — versionamento e publicação
 - **Claude + Claude Code** — inteligência operacional e editorial
+- **Manus** — inteligência operacional e editorial
 
 ---
 
