@@ -1,0 +1,333 @@
+@use "./base.scss";
+
+// =============================================================================
+// Deep Tech / Cyberpunk Corporativo — custom.scss
+// =============================================================================
+// Este arquivo sobrescreve `quartz/styles/custom.scss` do Quartz v4 via overlay
+// aplicado durante o CI (veja .github/workflows/deploy.yml).
+
+// -----------------------------------------------------------------------------
+// Variáveis globais
+// -----------------------------------------------------------------------------
+:root {
+  --deep-bg: #050816;
+  --deep-primary: #00f5ff;   // cyan neon
+  --deep-secondary: #7c3aed; // roxo profundo
+  --deep-tertiary: #a78bfa;  // lilás
+  --deep-gray: #94a3b8;
+  --deep-light: #1e293b;
+  --deep-text: #e2e8f0;
+}
+
+// -----------------------------------------------------------------------------
+// Fundo dot-grid + tipografia base
+// -----------------------------------------------------------------------------
+html,
+body {
+  background-color: var(--deep-bg) !important;
+}
+
+body {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 245, 255, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  background-attachment: fixed;
+  color: var(--deep-text);
+  font-family: "Inter", var(--bodyFont), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// -----------------------------------------------------------------------------
+// Títulos com glow sutil
+// -----------------------------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Syne", var(--headerFont), serif;
+  letter-spacing: -0.01em;
+  color: var(--deep-text);
+}
+
+h1 {
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+}
+
+h2 {
+  border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+  padding-bottom: 0.35rem;
+}
+
+// -----------------------------------------------------------------------------
+// Links com neon glow on hover
+// -----------------------------------------------------------------------------
+a {
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    text-shadow: 0 0 8px var(--deep-primary), 0 0 20px rgba(0, 245, 255, 0.26);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Glassmorphism para sidebars / header
+// -----------------------------------------------------------------------------
+.sidebar,
+.left,
+.right,
+.page-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(5, 8, 22, 0.72);
+  border: 1px solid rgba(0, 245, 255, 0.12);
+  border-radius: 12px;
+}
+
+.popover,
+.popover-inner {
+  background: rgba(5, 8, 22, 0.92) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 245, 255, 0.08);
+}
+
+// -----------------------------------------------------------------------------
+// Code blocks turbinados
+// -----------------------------------------------------------------------------
+code,
+pre,
+kbd {
+  font-family: "JetBrains Mono", var(--codeFont), monospace;
+}
+
+code {
+  background: rgba(0, 245, 255, 0.08);
+  color: var(--deep-primary);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
+
+pre {
+  background: #0a0f1e !important;
+  border-left: 3px solid var(--deep-primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 24px rgba(0, 245, 255, 0.05);
+  overflow-x: auto;
+
+  code {
+    background: transparent;
+    color: var(--deep-text);
+    padding: 0;
+  }
+}
+
+// Shell prompt em blocos bash/sh
+pre:has(code[data-language="bash"])::before,
+pre:has(code[data-language="sh"])::before,
+pre:has(code[data-language="shell"])::before,
+pre:has(code[data-language="zsh"])::before {
+  content: "$ ";
+  color: var(--deep-primary);
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+// -----------------------------------------------------------------------------
+// Blockquote
+// -----------------------------------------------------------------------------
+blockquote {
+  border-left: 3px solid var(--deep-secondary);
+  background: rgba(124, 58, 237, 0.06);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  color: var(--deep-tertiary);
+}
+
+// -----------------------------------------------------------------------------
+// Bento grid (homepage)
+// -----------------------------------------------------------------------------
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.bento-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(5, 8, 22, 0.72);
+  border: 1px solid rgba(0, 245, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 245, 255, 0.15);
+    border-color: rgba(0, 245, 255, 0.35);
+  }
+
+  h3 {
+    margin: 0.5rem 0 0.75rem;
+    font-size: 1.25rem;
+
+    a {
+      background: none;
+      color: var(--deep-tertiary);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--deep-primary);
+      }
+    }
+  }
+
+  p {
+    color: var(--deep-gray);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.bento-large {
+  grid-column: span 2;
+}
+
+.bento-wide {
+  grid-column: span 2;
+}
+
+.bento-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--deep-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-large,
+  .bento-wide {
+    grid-column: span 1;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Graph view — neon nodes
+// -----------------------------------------------------------------------------
+.graph-outer {
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(5, 8, 22, 0.9);
+}
+
+.graph-outer svg circle {
+  fill: var(--deep-secondary);
+  filter: drop-shadow(0 0 4px var(--deep-secondary));
+  transition: fill 0.3s ease, filter 0.3s ease;
+
+  &:hover {
+    fill: var(--deep-primary);
+    filter: drop-shadow(0 0 8px var(--deep-primary));
+  }
+}
+
+.graph-outer svg line {
+  stroke: rgba(0, 245, 255, 0.25);
+}
+
+// -----------------------------------------------------------------------------
+// Scroll reveal (classes adicionadas pelo IntersectionObserver em ScrollReveal)
+// -----------------------------------------------------------------------------
+.bento-card,
+main h2,
+main blockquote {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Fallback: se JS estiver desabilitado, mostra tudo
+.no-js {
+  .bento-card,
+  main h2,
+  main blockquote {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Command palette (busca Ctrl+K) — estética terminal
+// -----------------------------------------------------------------------------
+#search-container {
+  .search-space {
+    background: rgba(5, 8, 22, 0.95);
+    border: 1px solid var(--deep-primary);
+    border-radius: 8px;
+    box-shadow:
+      0 0 40px rgba(0, 245, 255, 0.2),
+      inset 0 0 20px rgba(0, 245, 255, 0.05);
+    backdrop-filter: blur(16px);
+  }
+
+  input,
+  .search-bar {
+    background: transparent;
+    border: none;
+    color: var(--deep-primary);
+    font-family: "JetBrains Mono", monospace;
+
+    &::placeholder {
+      color: rgba(0, 245, 255, 0.4);
+    }
+  }
+
+  .result-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-left: 3px solid var(--deep-secondary);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &.focus {
+      border-left-color: var(--deep-primary);
+      background: rgba(0, 245, 255, 0.05);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Responsivo fino
+// -----------------------------------------------------------------------------
+@media (max-width: 480px) {
+  body {
+    background-size: 20px 20px;
+  }
+
+  .bento-card {
+    padding: 1.15rem;
+  }
+}
