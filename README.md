@@ -18,7 +18,7 @@ Não é um blog. Não é um portfólio estático.
 ## Estrutura
 
 ```
-00-Inbox/          → captura bruta, ideias em estado larvar
+00-Inbox/          → captura bruta, ideias em estado seminal
 01-Projetos/       → projetos ativos (Hubstry CaaS, GuruDev, Instituto PCIHᶟ)
 02-Areas/          → domínios permanentes (pesquisa, financeiro, ecossistema)
 03-Recursos/       → templates, referências, frameworks
