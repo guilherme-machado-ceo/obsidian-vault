@@ -40,11 +40,32 @@ jobs:
 
       - name: Copy content
         run: |
-          rsync -av --exclude='.obsidian' --exclude='.git' --exclude='.github' --exclude='_quartz' --exclude='*.tmp' ./ _quartz/content/
+          rsync -av \
+            --exclude='.obsidian' \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_quartz' \
+            --exclude='customizations' \
+            --exclude='*.tmp' \
+            ./ _quartz/content/
 
       - name: Copy config
         run: |
           cp quartz.config.ts _quartz/quartz.config.ts
+
+      - name: Apply Deep Tech customizations (overlay)
+        run: |
+          # Sobrepõe arquivos do Quartz com nossas versões customizadas:
+          # - quartz.layout.ts (homepage Hero + ScrollReveal)
+          # - quartz/styles/custom.scss (paleta, glassmorphism, bento, etc.)
+          # - quartz/components/Hero.tsx + ScrollReveal.tsx + index.ts
+          # - quartz/components/scripts/*.inline.ts
+          if [ -d customizations ]; then
+            echo "Applying customizations overlay…"
+            cp -rv customizations/. _quartz/
+          else
+            echo "No customizations directory, skipping overlay."
+          fi
 
       - name: Build
         run: |
