@@ -12,7 +12,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "pt-BR",
-    baseUrl: "guilherme-machado-ceo.github.io/obsidian-vault",
+    baseUrl: "guilherme-machado-ceo.github.io/gabinete-polimata-atlantico-sul",
     ignorePatterns: [".obsidian", ".trash", "*.tmp", "_quartz", ".github", "customizations"],
     defaultDateType: "modified",
     theme: {
