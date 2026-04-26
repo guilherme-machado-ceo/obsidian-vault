@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabinete do Polímata · Guilherme Gonçalves Machado</title>
+<meta name="description" content="The Script of All and Everything · Ecossistema intelectual autoral de Guilherme Gonçalves Machado · Rio de Janeiro">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#060504; }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2a2010; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+
+const MOTO = "Inflexão do pensamento humano incidindo sobre o conjunto universo dos fenômenos, em interseção com stacks tecnológicas tanto analógicas quanto digitais, instanciando-se em paralelo ou série em múltiplas áreas do conhecimento como na tradição pancrônica dos polimatas, em comparação e contraste sistemáticos operada pela analogia — heurística, funcional ou homologia —, em um fluxo contínuo de pesquisa, estudo, criação, ensino e produção econômica.";
+
+const nodes = {
+  einSofAur: {
+    id: "einSofAur", label: "EIN SOF AUR", glyph: "★",
+    sublabel: "The Script of All and Everything · documento fundante",
+    desc: "Documento mais antigo do ecossistema. Propõe um paradigma epistemológico que: (1) realiza convergência de conhecimentos de todas as áreas do saber; (2) coleta, minera e processa dados em qualquer modalidade e em 7000+ línguas naturais; (3) faz interface via sensores mecatrônicos (TI + TA) — os 5 sentidos da máquina; (4) integra todas as linguagens — naturais, musicais, gráficas, científicas. IDE como 'cérebro ciborgê cibernético'. 'Fala todas as línguas'. // GENEALOGIA: Ein Sof → Beit Or Ein Sof · 'Script of All and Everything' → Semiografia / Poligrafia / Teografia · IDE como cérebro → codeiOgraph · sensores mecatrônicos → stack analógica-digital (moto perpétuo) · convergência de áreas → Segunda Escola de Toledo · linguagem da música → Morfologia Harmônica / HPG 1.0. Depositado no Zenodo como prova de anterioridade.",
+    tier: -1, accent: "#d4af37", dim: "#1a1200",
+  },
+  deepHub: {
+    id: "deepHub", label: "DEEP HUB PAPER", glyph: "◎",
+    sublabel: "4 campos, raízes semíticas, 7 níveis · versão zero da GuruDev",
+    desc: "Segundo documento mais antigo. Formula os 4 campos do conhecimento (Filosofias, Tradições Espirituais, Ciências, Artes), as raízes semânticas (modelo semítico), os 7 níveis de interpretação, e as 3 relações de concordância (similaridade, homologia, equivalência). // GENEALOGIA: 4 campos → 5 instâncias do IMIP (+ empreendedora) · raízes semíticas → Morfologia Harmônica · 7 níveis → GuruDev hermenêutica / TTM · 3 relações → 6 relações da Semiografia · 'Deep Hub' → Hubstry Deep Tech (nome). Depositado no Zenodo como prova de anterioridade.",
+    tier: -1, accent: "#b8860b", dim: "#120a00",
+  },
+  motoPerpetuo: {
+    id: "motoPerpetuo", label: "MOTO PERPÉTUO", glyph: "∞",
+    sublabel: "Princípio autoral gerador",
+    desc: MOTO,
+    tier: 0, accent: "#c9a84c", dim: "#2a1f05",
+  },
+  reineSprache: {
+    id: "reineSprache", label: "REINE SPRACHE", glyph: "λ",
+    sublabel: "Basso ostinato universal · Benjamin",
+    desc: "A linguagem da natureza — física e metafísica — da qual toda escrita humana é tradução. Princípio transversal que sustenta Naturaglia, Hierourgia e Poligrafia como variações sobre um ostinato comum. A escrita poligráfica é o espaço onde essas traduções se cruzam, tensionam e reconfiguram.",
+    tier: 1, accent: "#9b7a1a", dim: "#1a1204",
+  },
+  imip: {
+    id: "imip", label: "IMIP", glyph: "Ψ",
+    sublabel: "Instância Múltipla Integrada do Pensamento",
+    desc: "O sujeito cognitivo opera em cinco instâncias simultâneas: científica (→ Semiografia) · artística (→ Marcabrü Aiara) · espiritual universalista — à maneira de Ramakrishna: experiência interior de múltiplas tradições mantidas em sua integridade, não sincretismo (→ Teografia) · filosófica (→ Naturaglia) · empreendedora — start-up mode como ignição, não dogma; fase de validação do solopreneur polímata (→ Hubstry). Heterônimos como artefatos cognitivos externos (Clark) e protocolo endógeno de risco psicossocial (Dejours / NR-1). Agenciamento maquínico sem centro orgânico (Deleuze & Guattari). Corpus autoetnográfico: seis publicações Zenodo.",
+    tier: 1, accent: "#4a9e6e", dim: "#051409",
+  },
+  beitOr: {
+    id: "beitOr", label: "BEIT OR EIN SOF", glyph: "✦",
+    sublabel: "בֵּית אוֹר אֵין סוֹף · دَارُ نُورِ الأَزَل",
+    desc: "Meta-projeto civilizacional conduzido por Ezra ben Sefarad (tradição hebraico-sefardita / cabalística) e Ra'uf ibn Hadi al-Andalusí (tradição árabe-islâmica / Ikhwan al-Safa). Locus simbólico: Toledo — interseção civilizacional máxima entre Islam, Judaísmo e Cristandade. Produz: Poligrafia · Segunda Escola de Toledo · Sprachlehre · Léxico Poligráfico · Genealogia Gerativa.",
+    tier: 1, accent: "#7070dd", dim: "#05050f",
+  },
+  semiografia: {
+    id: "semiografia", label: "SEMIOGRAFIA", glyph: "σ",
+    sublabel: "Método geral · DOI 10.5281/zenodo.18802603",
+    desc: "Gesto dual de inventário pancrônico e prospecção. Mobiliza Barthes, Peirce, Greimas, Morris, Lotman, Charaudeau, Bakhtin. Valência teórica: capacidade de ligação epistemológica que um objeto precisa mobilizar para constituir-se como objeto científico pleno. Axioma: do dual (ambivalência) à polivalência.",
+    tier: 2, accent: "#c87040", dim: "#140802",
+  },
+  morfossemiografia: {
+    id: "morfossemiografia", label: "MORFOSSEMIOGRAFIA", glyph: "μ",
+    sublabel: "Ferramenta morfológica · DOI 10.5281/zenodo.19184886",
+    desc: "Primeiro desdobramento da Semiografia. Analisa como morfemas cristalizam história de práticas em categorias epistêmicas. Caso central: sufixo -urgia (ἔργον) e seus quatro prefixos como semioses cristalizadas distintas. A adjetivação naturalis em 'magia natural' como operação política de legitimação — cristalização semiótica com função de salvo-conduto eclesiástico.",
+    tier: 3, accent: "#c87040", dim: "#140802",
+  },
+  poligrafia: {
+    id: "poligrafia", label: "POLIGRAFIA", glyph: "П",
+    sublabel: "Gênero da escrita autoral",
+    desc: "Literatura multilíngue e simultânea em múltiplas camadas de materialidade — textual, semântica, histórica e medial. Opera por interseção (teoria dos conjuntos), ritornello (D&G) e translação interepistêmica (reine Sprache). Output do Beit Or Ein Sof. Designa o gênero formal de todo o ecossistema — o que a escrita É, enquanto a Semiografia designa como ela opera.",
+    tier: 2, accent: "#7070dd", dim: "#05050f",
+  },
+  segundaEscola: {
+    id: "segundaEscola", label: "SEGUNDA ESCOLA DE TOLEDO", glyph: "⚖",
+    sublabel: "Arquitetura institucional · 10 cadeiras civilizacionais",
+    desc: "Direito · Guerra · História · Filosofia · Artes & Ofícios · Ciências · Gramática & Ciências da Linguagem · Comércio & Economia · Tradições Espirituais / Teografia · Educação & Formação. Organiza o conhecimento como campo integrado na tradição pancrônica dos polímatas — de Pāṇini a Hermeto Pascoal.",
+    tier: 2, accent: "#7070dd", dim: "#05050f",
+  },
+  sprachlehre: {
+    id: "sprachlehre", label: "SPRACHLEHRE → TTM", glyph: "∂",
+    sublabel: "Doutrina da Língua · DOI 10.5281/zenodo.19056387",
+    desc: "Teoria Tridimensional do Morfema: largura (eixo combinatório-derivacional) · profundidade (eixo hermenêutico-semântico) · altura gráfica (eixo suprassegmental-escritural). Corpus multilingue: árabe, hebraico, sânscrito, mandarim, russo, tupi. Hermenêuticas estratificadas: PaRDeS, Quadriga, Ẓāhir/Bāṭin, Saptavidha.",
+    tier: 3, accent: "#7070dd", dim: "#05050f",
+  },
+  naturaglia: {
+    id: "naturaglia", label: "NATURAGLIA", glyph: "Ω",
+    sublabel: "Horizonte ontológico + Projeto filosófico do IMIP · DOI 10.5281/zenodo.18888646",
+    desc: "Papel duplo no ecossistema — único projeto com essa condição: (1) Horizonte ontológico de fundo: cinco Naturabilia como condição de possibilidade de qualquer pesquisa; (2) Externalização da instância filosófica do IMIP: o que o sujeito produz quando a inflexão incide sobre filosofia, teologia e direito naturais. Reunificação de cinco disciplinas fragmentadas pela modernidade: ciência natural · filosofia natural · história natural · direito natural · teologia natural. Música das esferas como basso ostinato transversal — não como metáfora, mas como princípio harmônico estrutural. Forma: passacaglia. Genealogia: Fílon · Ikhwan al-Safa · Maimônides · Tomás · Jung · Morin. Argumento mariano (Stabat Mater) como paradigma de convergência dos cinco Naturabilia. Único projeto do ecossistema que é simultaneamente fundamento e produto — porque a filosofia, levada ao limite de suas questões, gera internamente as questões de todas as outras.",
+    tier: 2, accent: "#3a9a5a", dim: "#021008",
+  },
+  grammath: {
+    id: "grammath", label: "GRAMMATH", glyph: "\u0393",
+    sublabel: "Universal Grammar of Experience \u00b7 framework transmodal",
+    desc: "Gram\u00e1tica universal da experi\u00eancia: organiza fen\u00f4menos tal como comparecem aos sentidos humanos, sensores de m\u00e1quinas, intui\u00e7\u00e3o, raz\u00e3o, imagina\u00e7\u00e3o e processos computacionais. Framework transmodal e semioticamente interoper\u00e1vel para ambientes h\u00edbridos de cogni\u00e7\u00e3o humano-m\u00e1quina-infraestrutura. Universalidade aristot\u00e9lica: universal n\u00e3o como abstra\u00e7\u00e3o metaf\u00edsica, mas como aquilo naturalmente predic\u00e1vel de muitos (Arist\u00f3teles, Sobre a Interpreta\u00e7\u00e3o). Papel duplo: (1) fundamento epistemol\u00f3gico \u2014 gramm\u00e1tica que estrutura toda experi\u00eancia antes de qualquer m\u00e9todo espec\u00edfico; (2) projeto cient\u00edfico do IMIP \u2014 o que a inst\u00e2ncia cient\u00edfica produz quando a inflex\u00e3o incide sobre cogni\u00e7\u00e3o h\u00edbrida. Naturaglia fornece a ontologia (o que existe); Grammath fornece a epistemologia operacional (como estruturar o que comp\u00e1rece). Semiografia opera dentro do Grammath. GuruDev implementa computacionalmente o que o Grammath descreve. HPG 1.0 produz sinais que o Grammath torna intelig\u00edveis.",
+    tier: 2, accent: "#5a9ab0", dim: "#02080e",
+  },
+  hpg: {
+    id: "hpg", label: "HPG 1.0", glyph: "≋",
+    sublabel: "Harmonic Protocol Grid · DOI 10.5281/zenodo.18652888",
+    desc: "Framework de comunicação multicanal para sistemas embarcados baseado em subdivisões racionais irredutíveis de frequência fundamental f₀. Omnigrid Harmônico 2D com 97 canais únicos (totiente de Euler, N=16). Harmonic Security Layer (HSL) com autenticação por coerência de fase. Convergência: música das esferas (Naturaglia) ↔ stack analógica-digital (Arduino, embarcados, Hubstry).",
+    tier: 3, accent: "#3a9a5a", dim: "#021008",
+  },
+  morfHarmonica: {
+    id: "morfHarmonica", label: "MORFOLOGIA HARM\u00d4NICA", glyph: "\u266b",
+    sublabel: "Campo fundado 22/jan/2026 \u00b7 Manifesto v1.0 Zenodo",
+    desc: "Campo de estudos cujo objeto \u00e9 a estrutura morfol\u00f3gica universal \u2014 princ\u00edpios que governam a gera\u00e7\u00e3o de formas em dom\u00ednios distintos: lingu\u00edstico, musical, geom\u00e9trico, mineral, vegetal e animal. Hip\u00f3tese central: esses dom\u00ednios s\u00e3o inst\u00e2ncias de uma mesma morfologia profunda, formalmente descrit\u00edvel e mutuamente traduz\u00edvel mutatis mutandis. Quatro fontes: morfologia sem\u00edtica (raiz tril\u00edtera/quadril\u00edtera) \u00b7 teoria harm\u00f4nica (tr\u00edades/t\u00e9trades) \u00b7 23 defini\u00e7\u00f5es dos Elementos de Euclides (operadores estruturais universais) \u00b7 morfometria geom\u00e9trica (Kendall shape space, Procrustes, thin-plate spline). 13 postulados com crit\u00e9rios de falseabilidade. Postulado central: triadicidade como propriedade estrutural do real \u2014 morfol\u00f3gica, ontologicamente distinta da triadicidade semi\u00f3tica de Peirce. Avô metodol\u00f3gico: D'Arcy Thompson (On Growth and Form, 1917). Hip\u00f3tese priorit\u00e1ria: shape space (Kendall) e chord space (Tymoczko) como inst\u00e2ncias de um espa\u00e7o morfol\u00f3gico universal via teoria das categorias (funtor). Hierarquia de 7 n\u00edveis universal: fonema/nota/coordenada/c\u00e9lula \u2192 discurso/composi\u00e7\u00e3o/filogenia/ecossistema.",
+    tier: 3, accent: "#e8a030", dim: "#180e00",
+  },
+  almanaque: {
+    id: "almanaque", label: "ALMANAQUE GURUDEV", glyph: "☉",
+    sublabel: "Formato editorial · Polyograph Press · versão impressa do Gabinete",
+    desc: "Almanaque GuruDev: inspirado nos almanaques do início do séc. XX — repositório de conhecimento heterogêneo com navegação não-linear, ótica polímata e poliglota. Formato editorial da Lexiograph / Polyograph Press. // SISTEMA DE VERSÕES: GuruDev.v(Nicho, Estágio) — morfossemiografia aplicada ao versionamento: Alpha/α (EdTech) · Alef/א (Cybersecurity) · Alif/ا (IA Geral) · Âmbar (Games/entretenimento) · Azul (Games/educação) · Amaranto (Games adultos). Alpha/Alef/Alif = primeiras letras do grego, hebraico e árabe — Segunda Escola de Toledo aplicada a releases. Estágios: 00 (protótipo) → 01 → β → 1.0 (estável). // ONTOLINGUAGEM: neologismo que nomeia o que GuruDev é — a linguagem que não descreve o ser mas é estrutura do ser computável. Léxico Poligráfico do Beit Or Ein Sof. // DODECÁLOGO: 12 campos de formação integral e interdisciplinar — cadeira 10 da Segunda Escola de Toledo (Educação & Formação). // NÍVEIS HERMENÊUTICOS (sistema canônico unificado): N1 Literal · N2 Parabólico · N3 Histórico · N4 Místico · N5 Funcional · N6 Estético · N7 Ontológico. Aliases: PaRDeS (hebraico) e sistema original (Deep Hub). Gabinete do Polímata = versão digital viva do Almanaque.",
+    tier: 3, accent: "#c0a030", dim: "#120e00",
+  },
+  codeiOgraph: {
+    id: "codeiOgraph", label: "codeiOgraph", glyph: "\u2388",
+    sublabel: "Plataforma de hermen\u00eautica computacional",
+    desc: "O c\u00f3digo-fonte n\u00e3o \u00e9 instru\u00e7\u00e3o formal: \u00e9 texto semi\u00f3tico-normativo que objetiva pensamento anal\u00f3gico em sintaxe computacional. Interpretar c\u00f3digo \u00e9 reconstruir o pensamento que nele se cristalizou \u2014 Savigny: Rekonstruktion des im Gesetz enthaltenen Gedankens. AGI \u00e9 antes de tudo um problema hermen\u00eautico e anal\u00f3gico. Arquitetura em quatro camadas: (1) Grid semi\u00f3tico do c\u00f3digo (verbi-voco-visual aplicado ao c\u00f3digo); (2) Motor de analogia transdom\u00ednio (operador euclidiano); (3) Savigny Engine: reconstru\u00e7\u00e3o hermen\u00eautica do pensamento objetivado \u2014 convergente com framework computacional da Morfossemiografia; (4) Grafo de pensamento: cartografia do pensamento em c\u00f3digo. O 'O' central: valor zero \u00b7 output \u00b7 \u00f3rbita \u00b7 objeto \u2014 polissemia constitutiva operando o pr\u00f3prio princ\u00edpio que implementa. Ambiente nativo do GuruDev. Cultura ciborgue e integra\u00e7\u00e3o homem-m\u00e1quina.",
+    tier: 3, accent: "#50a0d0", dim: "#020c14",
+  },
+  vvvGrid: {
+    id: "vvvGrid", label: "GRID VERBI\u2013VOCO\u2013VISUAL", glyph: "\u03b2",
+    sublabel: "Semiose tridimensional da l\u00edngua natural",
+    desc: "Axioma: a l\u00edngua natural \u00e9 uma semiose verbi\u2013voco\u2013visual. L = \u27e8verbi, voco, visual\u27e9. Tr\u00eas dimens\u00f5es coorigin\u00e1rias, n\u00e3o hier\u00e1rquicas: verbi (logos, inteligibilidade, eixo do sentido) \u00b7 voco (corporeidade, fonologia, prosody, l\u00ednguas de sinais \u2014 embodied cognition de Varela/Merleau-Ponty) \u00b7 visual (espacializa\u00e7\u00e3o, escrita, inscri\u00e7\u00e3o). Valor zero estrutural (\u00d8): dimens\u00e3o n\u00e3o realizada mas estruturalmente ativa. Universalidade: captura qualquer l\u00edngua de qualquer tipologia e origem. Grid fenomenol\u00f3gico-universal: neutralidade tipol\u00f3gica + exaustividade fenomenol\u00f3gica. Metaf\u00f3ra conceptual (Lakoff & Johnson) = opera\u00e7\u00e3o do logos sobre material do voco. Di\u00e1logo com linguistica cognitiva (embodiment). An\u00e1logo ao TTM: verbi \u2194 profundidade (sem\u00e2ntica) \u00b7 voco \u2194 largura (combinat\u00f3ria) \u00b7 visual \u2194 altura gr\u00e1fica. Gram\u00e1tica das interfaces entre n\u00edveis cl\u00e1ssicos. V\u00e1lida para filosofia da linguagem, gram\u00e1tica e lingu\u00edstica.",
+    tier: 3, accent: "#a080d0", dim: "#08040e",
+  },
+  teografia: {
+    id: "teografia", label: "TEOGRAFIA", glyph: "θ",
+    sublabel: "Campo: literaturas espirituais · esboço 8/jan/2026",
+    desc: "Iniciativa epistemológica de pesquisa, estudo, criação e ensino das literaturas espirituais da humanidade — escritas, orais, rituais e performativas. Universalismo crítico: nenhuma tradição é centro ou exceção. Equivalência oral/escrito. Texto ampliado: palavra, canto, rito, imagem, código, gesto. Tradição como processo vivo. Nona cadeira da Segunda Escola de Toledo.",
+    tier: 2, accent: "#a060c0", dim: "#0a0412",
+  },
+  hierourgia: {
+    id: "hierourgia", label: "HIEROURGIA", glyph: "ℌ",
+    sublabel: "Primeira obra teográfica sistemática",
+    desc: "ἱερός + ἔργον — a obra que faz a obra sagrada: descreve e produz o logos operativo sacro simultaneamente. Seis valências: teurgia · demiurgia · taumaturgia · dramaturgia · magia natural · magia cerimonial. Corpora: PGM, Picatrix, Jâmblico, Agrippa, patrística, homilética medieval. Inclui corpus de sermões, jaculatórias e litanias de autoria própria.",
+    tier: 3, accent: "#a060c0", dim: "#0a0412",
+  },
+  om3: {
+    id: "om3", label: "OM\u00b3", glyph: "\u2715",
+    sublabel: "Ordem Mundial Mercante Multimodal \u00b7 cadeira 8 da Segunda Escola de Toledo",
+    desc: "Ordem Mundial Mercante Multimodal (OM\u00b3) / World Mercantile Multimodal Order. Empresa global de servi\u00e7os estrat\u00e9gicos com voca\u00e7\u00e3o multinacional. Miss\u00e3o: com\u00e9rcio como institui\u00e7\u00e3o civilizat\u00f3ria \u2014 conectar povos, culturas e economias por sistemas log\u00edsticos inteligentes, sustent\u00e1veis e integrados. Modais: mar\u00edtimo, fluvial, rodovi\u00e1rio, ferrovi\u00e1rio e a\u00e9reo. Estrutura hier\u00e1rquica inspirada nas Ordens medievais (Templ\u00e1rios, Ordem de Cristo). Logo: X duplo em c\u00edrculo bronzeado \u2014 X como intersecci\u00f3n, multiplica\u00e7\u00e3o, opera\u00e7\u00e3o e nega\u00e7\u00e3o simultaneamente \u2014 morfossemiografia aplicada ao design de identidade. Ocupa a cadeira 8 da Segunda Escola de Toledo: Com\u00e9rcio & Economia. Expans\u00e3o: Am\u00e9rica Latina e Europa Lus\u00f3fona \u2192 \u00c1sia e Oriente M\u00e9dio \u2192 globaliza\u00e7\u00e3o completa.",
+    tier: 2, accent: "#b8860b", dim: "#120a00",
+  },
+  inoffshore: {
+    id: "inoffshore", label: "IN||OFF SHORE", glyph: "\u2016",
+    sublabel: "Plataforma de explora\u00e7\u00e3o de dados \u00b7 produto Hubstry",
+    desc: "Plataforma de coleta, descoberta, explora\u00e7\u00e3o, minera\u00e7\u00e3o e tratamento de dados \u2014 anal\u00f3gica \u00e0 explora\u00e7\u00e3o de petr\u00f3leo offshore. O operador || vem do OR l\u00f3gico de JavaScript: In (onshore, superficial, conhecido) || Off (offshore, profundo, desconhecido) \u2014 a plataforma opera nos dois regimes simultaneamente. Analogia petrol\u00edfera: s\u00edsmica \u2194 scraping/crawling \u00b7 perfura\u00e7\u00e3o \u2194 extra\u00e7\u00e3o estruturada \u00b7 refino \u2194 ETL/normaliza\u00e7\u00e3o \u00b7 petroqu\u00edmica \u2194 features de ML \u00b7 pipeline \u2194 data pipeline. Ressona com o Axioma GuruDev: Infinito Contextual (In) e Infinito Computacional (Off), acoplados pelo operador \u03a8. Variante On||Off Shore: captura ambival\u00eancia On/Off (digital, el\u00e9trico, presen\u00e7a/aus\u00eancia). Produto com branding pr\u00f3prio dentro da Hubstry \u2014 vocac\u00e7\u00e3o de plataforma B2B horizontal.",
+    tier: 3, accent: "#2060a0", dim: "#010608",
+  },
+  solomon: {
+    id: "solomon", label: "SOLOMON BUSINESS", glyph: "\u25c6",
+    sublabel: "Startup de produ\u00e7\u00e3o econ\u00f4mica \u00b7 reposicionamento digital de neg\u00f3cios tradicionais",
+    desc: "Miss\u00e3o: (re)posicionar neg\u00f3cios locais e tradicionais no mundo digital e contempor\u00e2neo, preservando com rigor e rever\u00eancia seus valores fundadores e seus prop\u00f3sitos originais, para que suas trajet\u00f3rias se perpetuem em prosperidade e sirvam de inspira\u00e7\u00e3o \u00e0s novas e \u00e0s futuras gera\u00e7\u00f5es. // Morfossemiografia aplicada a neg\u00f3cios: identificar o radical sem\u00e2ntico da empresa \u2014 o que ela ERA antes de cristalizar em estrutura \u2014 e reativar sua intensidade semi\u00f3tica latente no ambiente digital. O processo \u00e9 o inverso do esquecimento constitutivo: em vez de deixar a t\u00e9cnica fundadora ser apagada pela cristaliza\u00e7\u00e3o, a Solomon a resgata e a torna op\u00e9rant\u00e9 novamente. // Mercado: PMEs com hist\u00f3ria, heritage e dificuldade de digita\u00e7\u00e3o. Modelo B2B. Produto da cadeira 8 da Segunda Escola de Toledo (Com\u00e9rcio & Economia). // O nome Solomon: tradi\u00e7\u00e3o sapiencial \u2014 Salom\u00e3o como paradigma do construtor que preserva prop\u00f3sito enquanto renova forma (Templo de Salom\u00e3o como arquitetura de valor perene). Ecoa o Beit Or Ein Sof pela tradi\u00e7\u00e3o hebraica. // Vocação: miss\u00e3o, voca\u00e7\u00e3o e of\u00edcio \u2014 os tr\u00eas termos declaram que Solomon n\u00e3o \u00e9 apenas empresa mas chamado e artesanato.",
+    tier: 3, accent: "#906020", dim: "#0e0800",
+  },
+  vvvServices: {
+    id: "vvvServices", label: "VVV MICROSERVICES", glyph: "\u03b2",
+    sublabel: "Tr\u00eas microservi\u00e7os em Go \u00b7 uma por dimens\u00e3o do grid",
+    desc: "Implementa\u00e7\u00e3o do Grid Verbi\u2013Voco\u2013Visual como tr\u00eas microservi\u00e7os independentes em Go (Google): verbi-service (processamento sem\u00e2ntico / NLP / logos) \u00b7 voco-service (processamento de \u00e1udio / pros\u00f3dia / corporeidade) \u00b7 visual-service (processamento de imagem / OCR / gesto). Gateway: codeiOgraph (orquestra os tr\u00eas). Runtime: GuruDev\u00ae (linguagem nativa). Infra: Fly.io GRU (j\u00e1 em uso no Hubstry CaaS). Go: performativo, concorrente por design, bin\u00e1rios pequenos \u2014 ideal para microsservi\u00e7os com alta throughput. Cada servi\u00e7o \u00e9 inst\u00e2ncia de U(D) \u2014 unidade m\u00ednima operativa em seu dom\u00ednio. Serve tanto a IoT (Ag\u00eancia Laos) quanto a pipelines de IA (Lexiograph / codeiOgraph).",
+    tier: 4, accent: "#a080d0", dim: "#08040e",
+  },
+  axioma: {
+    id: "axioma", label: "AXIOMA DA GURUDEV", glyph: "\u03a8",
+    sublabel: "Princ\u00edpio fundacional \u00b7 dualidade infinito contextual / computacional",
+    desc: "\u27e6\u2113\u27e7 = \u03a8(\u03a6_ctx, \u03a6_comp). Para toda linha m\u00ednima \u2113: \u03a6_ctx \u2282 \u0421 (aberto, denso, n\u00e3o enumer\u00e1vel \u2014 infinito contextual); \u03a6_comp \u2282 \u0395 (fechado sob composi\u00e7\u00e3o \u2014 infinito computacional); \u03a8 = operador de acoplamento. Defini\u00e7\u00e3o 1: linha m\u00ednima \u2113 = express\u00e3o at\u00f4mica com efeito observ\u00e1vel n\u00e3o decompons\u00edvel sem perda de inten\u00e7\u00e3o. Iso\u00edstica com ponto euclidiano ('aquilo de que nada \u00e9 parte') e com a jaculat\u00f3ria ('ato de fala eficaz m\u00ednimo') \u2014 os tr\u00eas s\u00e3o inst\u00e2ncias do mesmo operador de unidade m\u00ednima em dom\u00ednios distintos (Morfologia Harm\u00f4nica, Hierourgia, Computa\u00e7\u00e3o). Oito espa\u00e7os \u03b5: euclidiano (GuruMatrix 5D) \u00b7 Hilbert (l\u00f3gica paraconsistente) \u00b7 Fourier (HPG 1.0) \u00b7 m\u00e9trico (Morfossemiografia) \u00b7 Sobolev (estabilidade de compila\u00e7\u00e3o) \u00b7 Minkowski (causalidade / Hubstry CaaS) \u00b7 fractal (hierarquia de 7 n\u00edveis) \u00b7 curvas el\u00edpticas (criptografia de compliance). \u03a8 conv\u00earge com operador \u03a8 da Semiografia v.0 \u2014 harmoniza\u00e7\u00e3o de namespacing pendente. AGI = problema de acoplamento din\u00e2mico entre \u0421 e \u0395 \u2014 n\u00e3o escala de par\u00e2metros.",
+    tier: 4, accent: "#d060a0", dim: "#120008",
+  },
+  urgias: {
+    id: "urgias", label: "AS SEIS VALÊNCIAS", glyph: "⬡",
+    sublabel: "Hexágono operativo da Hierourgia",
+    desc: "Teurgia (θεός+ἔργον) · Demiurgia (δήμιος+ἔργον) · Taumaturgia (θαῦμα+ἔργον) · Dramaturgia (δράμα+ἔργον) · Magia Natural (simpatias ocultas, imanência, Ficino/Porta/Agrippa I) · Magia Cerimonial (protocolo ritual, PGM, Picatrix, Clavicula Salomonis). Invariante pancrônico: a enunciação eficaz — ato de fala que pressupõe produção de efeito real não apenas retórico.",
+    tier: 4, accent: "#a060c0", dim: "#0a0412",
+  },
+  marcabru: {
+    id: "marcabru", label: "MARCABRÜ AIARA", glyph: "✒",
+    sublabel: "Heterônimo artístico-literário · desde 2017",
+    desc: "Identidade artístico-literária exclusiva: dramaturgia hospitalar (Platéias Hospitalares / Doutores da Alegria 2014–16) · poesia · música original · teoria musical · IA em música. Situada na indústria criativa — sexta maior indústria mundial — com Rio de Janeiro como locus territorial privilegiado. Protocolo NR-1 de contenção identitária. Distinto do Instituto PCIHᶟ.",
+    tier: 2, accent: "#cc5050", dim: "#100202",
+  },
+  grauZero: {
+    id: "grauZero", label: "GRAU ZERO / INSTÂNCIA MÍNIMA TRIPLA", glyph: "⌀",
+    sublabel: "Semiótica do manuscrito · DOIs .18652564 / .19431553",
+    desc: "Grau Zero do Traço: o traço manuscrito em estado liminar anterior a qualquer codificação — modo autônomo e irredutível de produção semiótica (Peirce, Barthes, Morin). Instância Mínima Tripla: um único gesto cursivo instancia ⟨2⟩, ⟨l⟩ e ⟨h⟩ simultaneamente — 'polissemia constitutiva emergente'. Extensão C-DDTF criptográfica. Corpus central do IMIP.",
+    tier: 3, accent: "#cc5050", dim: "#100202",
+  },
+  gurudev: {
+    id: "gurudev", label: "GURUDEV®", glyph: "⌘",
+    sublabel: "Linguagem de programação · github.com/marcabru-tech",
+    desc: "Linguagem de programação com arquitetura ontológica e multissemiótica. Semiose como categoria computacional de primeira classe. Fundamentos aristotélicos e peirceanos. DISPATCH_ON_HERMENEUTICS produz sete outputs distintos por nível hermenêutico. MVP com 25 testes, GuruDVM runtime, CLI, whitepaper v0.2. Convergência: Semiografia ↔ stack digital ↔ teoria do signo.",
+    tier: 3, accent: "#cc5050", dim: "#100202",
+  },
+  lexiograph: {
+    id: "lexiograph", label: "LEXIOGRAPH", glyph: "\u039b",
+    sublabel: "Startup pr\u00e9-seed \u00b7 fundada 2023 \u00b7 faixa formal-computacional",
+    desc: "Lexiograph: startup pr\u00e9-seed fundada em 2023. Entidade institucional da faixa formal-computacional do ecossistema \u2014 distinta da Hubstry (business tech), do Instituto PCIH\u00b3 (ICT p\u00fablico) e da Ag\u00eancia Laos (design/IoT). Abriga: Semiografia v.0 (sistema axiom\u00e1tico) \u00b7 codeiOgraph \u00b7 GuruDev\u00ae \u00b7 Grammath. Designa\u00e7\u00e3o: 'Lexiograph Deep Design' \u2014 o design do l\u00e9xico, da linguagem e dos sistemas formais como produto. Opera no espa\u00e7o entre logos e matema que a Semiografia v.0 prop\u00f5e tornar interoper\u00e1vel.",
+    tier: 2, accent: "#70a070", dim: "#041004",
+  },
+  institutoPCIH: {
+    id: "institutoPCIH", label: "INSTITUTO PCIHᶟ", glyph: "◈",
+    sublabel: "Polymath Cyborg Intelligence Hub · braço ICT",
+    desc: "Vocação ICT/pública para acesso a financiamento institucional e pesquisa. Interface do ecossistema com o sistema nacional de CT&I. Âncora da Segunda Escola de Toledo para editais públicos. Cláusula ética inegociável: sem licenciamento para armas autônomas de IA ou vigilância de cidadãos — posição convergente com Anthropic por derivação independente.",
+    tier: 2, accent: "#4080b0", dim: "#020810",
+  },
+  hubstry: {
+    id: "hubstry", label: "HUBSTRY · TRADEFLOW · ECOSSISTEMA", glyph: "⚙",
+    sublabel: "Produção econômica · fundado 2023",
+    desc: "Hubstry Deep Tech (2023): CaaS em Rust para ECA Digital (Lei 15.211/2025), Fly.io GRU. TradeFlow: automação de comércio exterior, Next.js/Supabase/Mercado Pago. Agência Laos: design + IoT (stack analógica-digital). Alessa Machado em Negócios: marketing. Oficina de Labareda / Ogum: produção artesanal. Indústrias Alvarenga. Produção econômica como dimensão constitutiva — não separada — do moto perpétuo.",
+    tier: 2, accent: "#4080b0", dim: "#020810",
+  },
+};
+
+const edges = [
+  ["einSofAur","motoPerpetuo"],["einSofAur","beitOr"],
+  ["einSofAur","codeiOgraph"],["einSofAur","segundaEscola"],
+  ["einSofAur","morfHarmonica"],["einSofAur","semiografia"],
+  ["deepHub","motoPerpetuo"],["deepHub","imip"],
+  ["deepHub","gurudev"],["deepHub","morfHarmonica"],
+  ["deepHub","semiografia"],["deepHub","hubstry"],
+  ["einSofAur","deepHub"],
+  ["motoPerpetuo","reineSprache"],["motoPerpetuo","imip"],["motoPerpetuo","beitOr"],
+  ["motoPerpetuo","semiografia"],["motoPerpetuo","naturaglia"],["motoPerpetuo","teografia"],
+  ["motoPerpetuo","marcabru"],["motoPerpetuo","institutoPCIH"],["motoPerpetuo","hubstry"],
+  ["imip","naturaglia"],
+  ["imip","grammath"],
+  ["motoPerpetuo","grammath"],
+  ["naturaglia","grammath"],
+  ["semiografia","grammath"],
+  ["grammath","gurudev"],
+  ["grammath","hpg"],
+  ["grammath","hierourgia"],
+  ["reineSprache","naturaglia"],["reineSprache","hierourgia"],["reineSprache","poligrafia"],
+  ["beitOr","poligrafia"],["beitOr","segundaEscola"],["beitOr","sprachlehre"],["beitOr","imip"],
+  ["semiografia","morfossemiografia"],["semiografia","grauZero"],["semiografia","gurudev"],
+  ["morfossemiografia","hierourgia"],
+  ["naturaglia","hpg"],["naturaglia","hierourgia"],
+  ["teografia","hierourgia"],["segundaEscola","teografia"],
+  ["hierourgia","urgias"],
+  ["marcabru","grauZero"],["marcabru","gurudev"],
+  ["imip","marcabru"],
+  ["imip","gurudev"],
+  ["gurudev","morfHarmonica"],
+  ["naturaglia","gurudev"],
+  ["teografia","gurudev"],
+  ["institutoPCIH","hubstry"],["hubstry","hpg"],
+  ["lexiograph","semiografia"],["lexiograph","gurudev"],
+  ["lexiograph","codeiOgraph"],["lexiograph","grammath"],
+  ["motoPerpetuo","lexiograph"],
+  ["semiografia","gurudev"],
+  ["gurudev","axioma"],["semiografia","axioma"],
+  ["gurudev","almanaque"],["lexiograph","almanaque"],
+  ["beitOr","almanaque"],["segundaEscola","almanaque"],
+  ["morfossemiografia","almanaque"],
+  ["gurudev","institutoPCIH"],
+  ["gurudev","vvvGrid"],
+  ["segundaEscola","om3"],["hubstry","om3"],
+  ["hubstry","inoffshore"],["axioma","inoffshore"],
+  ["grammath","inoffshore"],["lexiograph","inoffshore"],
+  ["segundaEscola","solomon"],["morfossemiografia","solomon"],["beitOr","solomon"],
+  ["hubstry","solomon"],
+  ["vvvGrid","vvvServices"],["gurudev","vvvServices"],
+  ["codeiOgraph","vvvServices"],["hubstry","vvvServices"],
+  ["grammath","axioma"],["morfHarmonica","axioma"],
+  ["hubstry","axioma"],["hpg","axioma"],["hierourgia","axioma"],
+  ["sprachlehre","morfHarmonica"],["naturaglia","morfHarmonica"],
+  ["hpg","morfHarmonica"],["poligrafia","morfHarmonica"],
+  ["beitOr","morfHarmonica"],["morfHarmonica","hierourgia"],
+  ["grammath","codeiOgraph"],["semiografia","codeiOgraph"],
+  ["morfossemiografia","codeiOgraph"],["gurudev","codeiOgraph"],
+  ["hubstry","codeiOgraph"],
+  ["sprachlehre","vvvGrid"],["grammath","vvvGrid"],
+  ["semiografia","vvvGrid"],["vvvGrid","codeiOgraph"],
+  ["morfHarmonica","grammath"],
+];
+
+const tiers = [
+  { label: "GÊNESE · DOCUMENTOS FUNDANTES", ids: ["einSofAur", "deepHub"] },
+  { label: "PRINCÍPIO GERADOR", ids: ["motoPerpetuo"] },
+  { label: "FUNDAMENTOS", ids: ["reineSprache","imip","beitOr"] },
+  { label: "MÉTODOS · CAMPOS · HETERÔNIMOS · INSTITUIÇÕES", ids: [
+    "semiografia","poligrafia","segundaEscola","naturaglia","grammath",
+    "teografia","marcabru","lexiograph","institutoPCIH","hubstry","om3",
+  ]},
+  { label: "FERRAMENTAS · OBRAS · PROJETOS", ids: [
+    "morfossemiografia","sprachlehre","hpg","hierourgia","grauZero","gurudev","morfHarmonica","codeiOgraph","vvvGrid","inoffshore","solomon","almanaque",
+  ]},
+  { label: "OBJETO DA OBRA MAIOR", ids: ["urgias"] },
+  { label: "PRINC\u00cdPIO FUNDACIONAL COMPUTACIONAL", ids: ["axioma"] },
+  { label: "IMPLEMENTA\u00c7\u00d5ES", ids: ["vvvServices"] },
+];
+
+const BG = "#060504";
+const SURFACE = "#0c0a08";
+const BORDER = "#1e1a12";
+const MUTED = "#3a3020";
+const TEXT = "#d4c8a8";
+const FAINT = "#6a5a3a";
+
+function GabinetePolimata() {
+  const [active, setActive] = useState(null);
+  const [hovered, setHovered] = useState(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setTimeout(() => setMounted(true), 60); }, []);
+
+  const current = active || hovered;
+  const node = current ? nodes[current] : null;
+  const connectedIds = active
+    ? edges.filter(([a,b]) => a===active||b===active).map(([a,b])=>a===active?b:a)
+    : [];
+  const isConn = (id) => active && edges.some(([a,b])=>(a===active&&b===id)||(b===active&&a===id));
+  const isDim  = (id) => active && id!==active && !isConn(id);
+
+  return (
+    <div style={{ minHeight:"100vh", background:BG, color:TEXT,
+      fontFamily:"'Palatino Linotype','Book Antiqua',Palatino,serif",
+      display:"flex", flexDirection:"column",
+      opacity: mounted?1:0, transition:"opacity 0.5s ease",
+    }}>
+
+      {/* HEADER */}
+      <header style={{ borderBottom:`1px solid ${BORDER}`, padding:"36px 48px 28px",
+        background:`linear-gradient(180deg,#0a0804 0%,${BG} 100%)`, position:"relative", overflow:"hidden" }}>
+        <div style={{ position:"absolute", inset:0, pointerEvents:"none",
+          background:"radial-gradient(ellipse at 15% 50%,#c9a84c08 0%,transparent 55%), radial-gradient(ellipse at 85% 50%,#7070dd08 0%,transparent 55%)" }}/>
+        <div style={{ fontSize:10, letterSpacing:7, color:MUTED, marginBottom:10, textTransform:"uppercase" }}>
+          Guilherme Gonçalves Machado · Rio de Janeiro · ORCID 0009-0008-1083-0784
+        </div>
+        <h1 style={{ fontSize:"clamp(20px,2.8vw,34px)", fontWeight:"normal",
+          color:"#c9a84c", letterSpacing:4, margin:"0 0 10px", textTransform:"uppercase" }}>
+          Gabinete do Polímata
+        </h1>
+        <p style={{ fontSize:12, color:FAINT, fontStyle:"italic", maxWidth:700,
+          lineHeight:1.75, margin:"0 0 20px" }}>{MOTO}</p>
+        <div style={{ display:"flex", gap:12, flexWrap:"wrap" }}>
+          {["Polyograph","Zenodo","Instituto PCIHᶟ","GitHub · marcabru-tech"].map(l=>(
+            <span key={l} style={{ fontSize:9, letterSpacing:3, color:MUTED,
+              border:`1px solid ${BORDER}`, padding:"4px 12px", textTransform:"uppercase" }}>{l}</span>
+          ))}
+        </div>
+      </header>
+
+      <div style={{ display:"flex", flex:1 }}>
+
+        {/* GRAPH */}
+        <main style={{ flex:1, padding:"36px 40px", overflowY:"auto" }}>
+          {tiers.map((tier,ti)=>(
+            <section key={ti} style={{ marginBottom:40,
+              opacity: mounted?1:0, transform: mounted?"none":"translateY(10px)",
+              transition:`opacity 0.4s ease ${ti*0.07}s, transform 0.4s ease ${ti*0.07}s` }}>
+              <div style={{ fontSize:9, letterSpacing:6, color:MUTED, textTransform:"uppercase",
+                marginBottom:16, paddingBottom:8, borderBottom:`1px solid ${BORDER}`,
+                display:"flex", alignItems:"center", gap:10 }}>
+                <span style={{ color:BORDER, fontSize:12 }}>▸</span>{tier.label}
+              </div>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:10,
+                justifyContent: tier.ids.length===1?"center":"flex-start" }}>
+                {tier.ids.map(id=>{
+                  const n = nodes[id];
+                  const isAct = active===id;
+                  const isC = isConn(id);
+                  const isD = isDim(id);
+                  const isH = hovered===id;
+                  return (
+                    <button key={id}
+                      onClick={()=>setActive(active===id?null:id)}
+                      onMouseEnter={()=>setHovered(id)}
+                      onMouseLeave={()=>setHovered(null)}
+                      style={{
+                        background: isAct ? `linear-gradient(135deg,${n.dim} 0%,${n.accent}1a 100%)`
+                          : (isC||isH) ? n.dim : "transparent",
+                        border: isAct ? `1px solid ${n.accent}`
+                          : isC ? `1px solid ${n.accent}60`
+                          : isD ? `1px solid ${BORDER}15`
+                          : `1px solid ${n.accent}28`,
+                        borderRadius:2, outline:"none", cursor:"pointer", textAlign:"left",
+                        padding: id==="motoPerpetuo" ? "22px 36px" : "12px 16px",
+                        opacity: isD ? 0.12 : 1,
+                        transition:"all 0.15s ease",
+                        minWidth: id==="motoPerpetuo" ? 280 : 0,
+                        maxWidth: id==="motoPerpetuo" ? 520 : 260,
+                        position:"relative",
+                        boxShadow: isAct ? `0 0 28px ${n.accent}18` : "none",
+                      }}>
+                      {isC && !isAct && (
+                        <span style={{ position:"absolute", inset:-1, border:`1px solid ${n.accent}`,
+                          borderRadius:2, animation:"bp 2s ease-in-out infinite", pointerEvents:"none" }}/>
+                      )}
+                      <div style={{ display:"flex", alignItems:"baseline", gap:7, marginBottom:4 }}>
+                        <span style={{ fontSize: id==="motoPerpetuo"?22:15, color:n.accent,
+                          opacity:0.65, lineHeight:1, fontFamily:"serif" }}>{n.glyph}</span>
+                        <span style={{ fontSize: id==="motoPerpetuo"?12:9.5, fontWeight:"bold",
+                          letterSpacing:2, color: isAct?n.accent:`${n.accent}bb`, textTransform:"uppercase" }}>
+                          {n.label}
+                        </span>
+                      </div>
+                      <div style={{ fontSize:9.5, color:`${n.accent}60`,
+                        fontStyle:"italic", letterSpacing:0.3, lineHeight:1.4 }}>{n.sublabel}</div>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          ))}
+
+          <div style={{ marginTop:48, paddingTop:24, borderTop:`1px solid ${BORDER}` }}>
+            <div style={{ fontSize:9, letterSpacing:5, color:MUTED, textTransform:"uppercase", marginBottom:14 }}>
+              ▸ Mapa de relações estruturais
+            </div>
+            <div style={{ display:"flex", flexWrap:"wrap", columnGap:18, rowGap:3 }}>
+              {edges.map(([a,b],i)=>(
+                <span key={i} style={{ fontSize:9.5, color:BORDER, fontFamily:"monospace" }}>
+                  {nodes[a]?.label.split(" ")[0]}
+                  <span style={{ color:MUTED }}> → </span>
+                  {nodes[b]?.label.split(" ")[0]}
+                </span>
+              ))}
+            </div>
+          </div>
+        </main>
+
+        {/* SIDE PANEL */}
+        <aside style={{ width:360, borderLeft:`1px solid ${BORDER}`,
+          background:SURFACE, display:"flex", flexDirection:"column",
+          position:"sticky", top:0, height:"100vh", overflowY:"auto" }}>
+
+          {node ? (
+            <div style={{ padding:"36px 28px" }}>
+              <div style={{ fontSize:9, letterSpacing:5, color:MUTED,
+                textTransform:"uppercase", marginBottom:20 }}>
+                {active?"Nó ativo":"Prévia"}
+              </div>
+              <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:8 }}>
+                <span style={{ fontSize:30, color:node.accent, opacity:0.7, fontFamily:"serif" }}>
+                  {node.glyph}
+                </span>
+                <div style={{ fontSize:13, fontWeight:"bold", color:node.accent,
+                  letterSpacing:2, lineHeight:1.2, textTransform:"uppercase" }}>
+                  {node.label}
+                </div>
+              </div>
+              <div style={{ fontSize:10, color:`${node.accent}80`, fontStyle:"italic",
+                marginBottom:18, letterSpacing:0.3 }}>{node.sublabel}</div>
+              <div style={{ height:1, background:`linear-gradient(90deg,${node.accent}40,transparent)`, marginBottom:18 }}/>
+              <div style={{ fontSize:12, color:"#8a7a5a", lineHeight:1.85 }}>{node.desc}</div>
+
+              {active && connectedIds.length>0 && (
+                <div style={{ marginTop:30 }}>
+                  <div style={{ fontSize:9, letterSpacing:4, color:MUTED,
+                    textTransform:"uppercase", marginBottom:12 }}>Conectado a</div>
+                  {connectedIds.map(id=>{
+                    const o = nodes[id];
+                    const isOut = edges.some(([a,b])=>a===active&&b===id);
+                    return (
+                      <button key={id} onClick={()=>setActive(id)}
+                        style={{ display:"flex", alignItems:"center", gap:10, width:"100%",
+                          padding:"8px 10px", marginBottom:4,
+                          border:`1px solid ${o.accent}20`, background:`${o.accent}08`,
+                          borderRadius:2, cursor:"pointer", textAlign:"left", outline:"none",
+                          transition:"background 0.12s" }}
+                        onMouseEnter={e=>e.currentTarget.style.background=`${o.accent}18`}
+                        onMouseLeave={e=>e.currentTarget.style.background=`${o.accent}08`}>
+                        <span style={{ fontSize:15, color:o.accent, opacity:0.55,
+                          fontFamily:"serif", flexShrink:0 }}>{o.glyph}</span>
+                        <div style={{ minWidth:0 }}>
+                          <div style={{ fontSize:9, color:o.accent, letterSpacing:1.5, textTransform:"uppercase" }}>
+                            {isOut?"→":"←"} {o.label}
+                          </div>
+                          <div style={{ fontSize:9, color:`${o.accent}50`, fontStyle:"italic", marginTop:1 }}>
+                            {o.sublabel.split("·")[0].trim()}
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {active && (
+                <button onClick={()=>setActive(null)} style={{ marginTop:24, width:"100%",
+                  padding:"8px", border:`1px solid ${BORDER}`, background:"transparent",
+                  color:MUTED, fontSize:9, letterSpacing:3, textTransform:"uppercase",
+                  cursor:"pointer", borderRadius:2, outline:"none" }}>
+                  Limpar seleção ×
+                </button>
+              )}
+            </div>
+          ) : (
+            <div style={{ padding:"36px 28px" }}>
+              <div style={{ fontSize:9, letterSpacing:5, color:MUTED,
+                textTransform:"uppercase", marginBottom:24 }}>Legenda</div>
+              {[
+                ["#c9a84c","Princípio gerador","Moto Perpétuo"],
+                ["#9b7a1a","Basso ostinato","Reine Sprache"],
+                ["#4a9e6e","Teoria do sujeito","IMIP"],
+                ["#7070dd","Projeto civilizacional","Beit Or Ein Sof"],
+                ["#c87040","Método / ferramenta","Semiografia et al."],
+                ["#3a9a5a","Horizonte ontológico","Naturaglia"],
+                ["#a060c0","Campo teográfico","Teografia / Hierourgia"],
+                ["#cc5050","Heterônimo / criação","Marcabrü Aiara"],
+                ["#4080b0","Institucional / econômico","PCIHᶟ / Hubstry"],
+              ].map(([c,l,s])=>(
+                <div key={l} style={{ display:"flex", alignItems:"center", gap:10, marginBottom:11 }}>
+                  <div style={{ width:10, height:10, borderRadius:1, background:c, flexShrink:0 }}/>
+                  <div>
+                    <div style={{ fontSize:11, color:FAINT }}>{l}</div>
+                    <div style={{ fontSize:9, color:MUTED, fontStyle:"italic" }}>{s}</div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ marginTop:28, padding:"16px", border:`1px solid ${BORDER}`,
+                borderRadius:2, fontSize:11, color:MUTED, lineHeight:1.7, fontStyle:"italic" }}>
+                Clique em qualquer nó para expandir sua descrição e visualizar conexões no ecossistema.
+              </div>
+            </div>
+          )}
+        </aside>
+      </div>
+
+      <style>{`
+        @keyframes bp { 0%,100%{opacity:.25} 50%{opacity:.85} }
+        ::-webkit-scrollbar{width:3px}
+        ::-webkit-scrollbar-track{background:transparent}
+        ::-webkit-scrollbar-thumb{background:#2a2010;border-radius:2px}
+      `}</style>
+    </div>
+  );
+}
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(GabinetePolimata));
+</script>
+</body>
+</html>
